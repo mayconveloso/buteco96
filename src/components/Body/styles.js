@@ -66,6 +66,10 @@ export const Batatas = styled.section`
   box-shadow: rgba(0,0,0,0.3) 0px 0px 5px 0px;
 
   border-radius: 8px 8px 0 0;
+
+  @media(max-width: 600px){
+    width: 90%;
+  }
 `;
 
 export const Porcoes = styled.section`
@@ -80,6 +84,11 @@ export const Porcoes = styled.section`
 
   background-color: var(--cor1);
   color: var(--white);
+
+  @media(max-width: 600px){
+    width: 90%;
+  }
+
 `;
 
 export const Bebidas = styled.section`
@@ -95,6 +104,11 @@ export const Bebidas = styled.section`
   background-color: var(--cor1);
   color: var(--white);
 
-  border-radius: 0 0 8px 8px ;
+  border-radius: 0 0 8px 8px;
+
+  @media(max-width: 600px){
+    width: 90%;
+  }
+
 `;
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   border-radius: 8px;
+  position: relative;
 
   background-color: var(--white);
   color: var(--cor5);
@@ -19,6 +20,77 @@ export const Container = styled.div`
   img{
     border-radius: 50% 50% 0 0;
     box-shadow: rgba(0,0,0,0.8) 0px 0px 5px 0px;
+  }
+
+  .hidden{
+    display: none!important;
+  }
+
+  div.modal {
+    width: 50%;
+    height: 50%;
+
+    position: absolute;
+    top: 25%;
+    left: 25%;
+
+    background-color: var(--cor5);
+    opacity: 1;
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    color: var(--cor1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  div.modal > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  div.group{
+    padding: 20px 2px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:first-child{
+      box-shadow: 0 7px 3px -7px var(--cor1);
+    }
+  }
+
+  div.group > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+
+    border-radius: 8px;
+    background-color: var(--white);
+
+    padding:5px;
+
+    box-shadow: 0 0 5px 0 var(--cor1);
+    color: var(--cor1);
+
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    transition: all 0.4s;
+
+    &:hover{
+      background-color: rgba(255,255,255,0.1);
+    }
   }
 
   @media( max-width: 928px){

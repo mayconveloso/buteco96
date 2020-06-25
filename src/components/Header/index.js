@@ -4,6 +4,10 @@ import { Container, Logo, Menu, Car, CartIcon } from './styles';
 const LogoImg = require('./logo.png');
 
 function Layout() {
+
+  function finalizar(){
+    console.log("finalizar")
+  }
   return (
     <Container>
       <div className="flex">
@@ -43,10 +47,33 @@ function Layout() {
         </div>
         <Car>
           <div className="itens">
-            <span> <span className="item">0</span> itens </span>
-            <span className="valor"> 0,00 </span>
+            <span className="valor"> 0 </span>
           </div>
-          <Link to=""> <span className="car">Carrinho</span> <CartIcon /> </Link>
+          <input id="car-toggle" type="checkbox" />
+          <label className="label-car" data-content="0" htmlFor="car-toggle">
+            <span className="car">Carrinho</span> <CartIcon />
+          </label>
+          <div className="nav">
+            <nav>
+              <ul>
+                <li className="li-itens">
+                  <label id="Batata">
+                    Batatas
+                  </label>
+                  <label id="Porcoes">
+                    Porcoes
+                  </label>
+                  <label id="Bebidas">
+                    Bebidas
+                  </label>
+                </li>
+                <li className="preco-finalizar">
+                  <span>Total: <span className="total">0</span></span>
+                  <button onClick={() => finalizar()}>Fazer pedido</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </Car>
       </div>
     </Container>

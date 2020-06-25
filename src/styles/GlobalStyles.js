@@ -33,6 +33,10 @@ export default createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
 
+  button{
+    cursor: pointer;
+  }
+
   :root {
     --primary: #36393f;
     --secondary: #2f3136;

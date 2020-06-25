@@ -18,18 +18,21 @@ function Footer() {
           <label>Batata Recheada</label>
           <div className="card-contet">
             <Card
+              type="Batata Recheada"
               nome="Strogonoff de Frango"
               src="https://picsum.photos/300/200"
               descricao="batata, frango, batata palha"
               preco="23,99"
             />
             <Card
+              type="Batata Recheada"
               nome="Carne Seca"
               src="https://picsum.photos/300/200"
               descricao="batata, carne seca, queijo ou catupiry"
               preco="25,99"
             />
             <Card
+              type="Batata Recheada"
               nome="Brócolis"
               src="https://picsum.photos/300/200"
               descricao="batata, brócolis, queijo mussarela, bacon"
@@ -41,6 +44,7 @@ function Footer() {
           <label>Porções</label>
           <div className="card-contet">
             <Card
+              type="Porções"
               nome="Batata frita"
               src="https://picsum.photos/300/200"
               descricao="catupiry, queijo mussarela, cheddar, katchup, bacon"
@@ -48,12 +52,14 @@ function Footer() {
               preco2="29,99 - G"
             />
             <Card
+              type="Porções"
               nome="Calabresa com cebola"
               src="https://picsum.photos/300/200"
               preco="7,99 - P"
               preco2="14,99 - G"
             />
             <Card
+              type="Porções"
               nome="Mandioca com Manteiga"
               src="https://picsum.photos/300/200"
               preco="5,99 - P"
@@ -65,24 +71,28 @@ function Footer() {
           <label>Bebidas</label>
           <div className="card-contet">
             <Card
+              type="Bebidas"
               nome="Coca-Cola"
               src="https://picsum.photos/300/200"
               descricao="lata - 350ml"
               preco="4,99"
             />
             <Card
+              type="Bebidas"
               nome="Guaraná Antática"
               src="https://picsum.photos/300/200"
               descricao="lata - 350ml"
               preco="4,99"
             />
             <Card
+              type="Bebidas"
               nome="Pepsi"
               src="https://picsum.photos/300/200"
               descricao="garrafa - 2l"
               preco="9,99"
             />
             <Card
+              type="Bebidas"
               nome="Cerverja skol"
               src="https://picsum.photos/300/200"
               descricao="lata - 350ml"
