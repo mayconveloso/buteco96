@@ -46,7 +46,7 @@ function Layout() {
     precoTotal = precoTotal.replace(" ", `${espa}`);
 
     var mensagem = [];
-    mensagem.push("Pedido:")
+    mensagem.push(`Pedidos:${br}`)
     newDadosPedido.forEach((item, index) => {
       mensagem.push(`nº:${espa}${index + 1}`)
 
