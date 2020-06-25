@@ -7,173 +7,214 @@ class Card extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleClickEscolher = this.handleClickEscolher.bind(this);
+    localStorage.removeItem("precoTotal");
+    localStorage.removeItem("dadosPedido");
     if (localStorage.getItem("pedidosID") === null || localStorage.getItem("pedidosID") === "NaN") { localStorage.setItem("pedidosID", 0) };
   }
-  
+
   handleClick = (event) => {
-    const { type } = event.props;
+    try {
+      const { type } = event.props;
 
-    if (type === "Batata Recheada") {
-      this.inputPedidos(event, "Batata");
-      this.precoTotal();
-    }
+      if (type === "Batata Recheada") {
+        this.inputPedidos(event, "Batata");
+        this.precoTotal();
+        return;
+      }
 
-    if (type === "Porções") {
-      this.inputPedidos(event, "Porcoes");
-      this.precoTotal();
-    }
+      if (type === "Porções") {
+        this.inputPedidos(event, "Porcoes");
+        this.precoTotal();
+        return;
+      }
 
-    if (type === "Bebidas") {
-      this.inputPedidos(event, "Bebidas");
-      this.precoTotal();
+      if (type === "Bebidas") {
+        this.inputPedidos(event, "Bebidas");
+        this.precoTotal();
+        return;
+      }
+    } catch (err) {
+      console.log("error fazer pedido", err)
     }
   }
 
   inputPedidos(event, idLabel) {
-    const { nome, descricao, preco, preco2 } = event.props;
-    const label = document.querySelector(`#${idLabel}`);
 
-    var nPedidos = parseInt(localStorage.getItem("pedidosID"));
-    nPedidos = nPedidos + 1;
-    var propsPedido = { ...event.props, "id": `${nPedidos}` };
+    try {
 
-    event.props = { ...event.props, "id": `${nPedidos}` };
+      const { nome, descricao, preco, preco2 } = event.props;
+      const label = document.querySelector(`#${idLabel}`);
 
-    propsPedido = JSON.stringify(propsPedido);
+      var nPedidos = parseInt(localStorage.getItem("pedidosID"));
+      nPedidos = nPedidos + 1;
+      var propsPedido = { ...event.props, "id": `${nPedidos}` };
 
-    if (localStorage.getItem("dadosPedido")) {
-      var dadosPedidoAtt = localStorage.getItem("dadosPedido");
-      dadosPedidoAtt = JSON.parse(dadosPedidoAtt);
-      for (var i = 1; i < dadosPedidoAtt.length; i++) {
-        dadosPedidoAtt[`${nPedidos}`] = propsPedido;
-        localStorage.setItem("dadosPedido", JSON.stringify(dadosPedidoAtt));
+      event.props = { ...event.props, "id": `${nPedidos}` };
+
+      propsPedido = JSON.stringify(propsPedido);
+
+      if (localStorage.getItem("dadosPedido")) {
+        var dadosPedidoAtt = localStorage.getItem("dadosPedido");
+        dadosPedidoAtt = JSON.parse(dadosPedidoAtt);
+        for (var i = 1; i < dadosPedidoAtt.length; i++) {
+          dadosPedidoAtt[`${nPedidos}`] = propsPedido;
+          localStorage.setItem("dadosPedido", JSON.stringify(dadosPedidoAtt));
+        }
+      } else {
+        var dadosPedido = [];
+        dadosPedido[`${nPedidos}`] = propsPedido;
+        localStorage.setItem("dadosPedido", JSON.stringify(dadosPedido));
       }
-    } else {
-      var dadosPedido = [];
-      dadosPedido[`${nPedidos}`] = propsPedido;
-      localStorage.setItem("dadosPedido", JSON.stringify(dadosPedido));
+
+      const Div = document.createElement("div");
+      Div.setAttribute("class", "pedido");
+      Div.setAttribute("id", `${nPedidos}`);
+      Div.addEventListener('click', () => { this.removePedidos(nPedidos) }, false);
+
+      const DivText = document.createElement("div");
+      DivText.setAttribute("class", "texto");
+
+      const DivValor = document.createElement("div");
+      DivValor.setAttribute("class", "valor");
+
+      const h1 = document.createElement("h1");
+      var textH1 = document.createTextNode(`${nome}`);
+      h1.appendChild(textH1);
+      DivText.appendChild(h1);
+
+      if (descricao) {
+        const h3 = document.createElement("h3");
+        var textH3 = document.createTextNode(`${descricao}`);
+        h3.appendChild(textH3);
+        DivText.appendChild(h3);
+      }
+
+      Div.appendChild(DivText);
+
+      if (preco) {
+        const spanp1 = document.createElement("span");
+        spanp1.setAttribute("class", "RS");
+        var textSpanp1 = document.createTextNode(`${preco}`);
+        spanp1.appendChild(textSpanp1);
+        DivValor.appendChild(spanp1);
+      }
+
+      if (preco2) {
+        const spanp2 = document.createElement("span");
+        spanp2.setAttribute("class", "RS");
+        var textSpanp2 = document.createTextNode(`${preco2}`);
+        spanp2.appendChild(textSpanp2);
+        DivValor.appendChild(spanp2);
+      }
+
+      Div.appendChild(DivValor);
+
+      label.appendChild(Div);
+
+      localStorage.setItem("pedidosID", nPedidos);
+
+      return;
+    } catch (err) {
+      console.log("ipunt pedido", err)
     }
-
-    const Div = document.createElement("div");
-    Div.setAttribute("class", "pedido");
-    Div.setAttribute("id", `${nPedidos}`);
-    Div.addEventListener('click', () => { this.removePedidos(this) }, false);
-
-    const DivText = document.createElement("div");
-    DivText.setAttribute("class", "texto");
-
-    const DivValor = document.createElement("div");
-    DivValor.setAttribute("class", "valor");
-
-    const h1 = document.createElement("h1");
-    var textH1 = document.createTextNode(`${nome}`);
-    h1.appendChild(textH1);
-    DivText.appendChild(h1);
-
-    if (descricao) {
-      const h3 = document.createElement("h3");
-      var textH3 = document.createTextNode(`${descricao}`);
-      h3.appendChild(textH3);
-      DivText.appendChild(h3);
-    }
-
-    Div.appendChild(DivText);
-
-    if (preco) {
-      const spanp1 = document.createElement("span");
-      spanp1.setAttribute("class", "RS");
-      var textSpanp1 = document.createTextNode(`${preco}`);
-      spanp1.appendChild(textSpanp1);
-      DivValor.appendChild(spanp1);
-    }
-
-    if (preco2) {
-      const spanp2 = document.createElement("span");
-      spanp2.setAttribute("class", "RS");
-      var textSpanp2 = document.createTextNode(`${preco2}`);
-      spanp2.appendChild(textSpanp2);
-      DivValor.appendChild(spanp2);
-    }
-
-    Div.appendChild(DivValor);
-
-    label.appendChild(Div);
-
-    localStorage.setItem("pedidosID", nPedidos);
   }
 
   precoTotal() {
-    const pedidos = document.querySelectorAll(".RS");
-    const labelCar = document.querySelector(".label-car")
+    try {
 
-    let Total = 0;
+      const pedidos = document.querySelectorAll(".RS");
+      const labelCar = document.querySelector(".label-car")
 
-    pedidos.forEach((pedido) => {
+      let Total = 0;
 
-      const precoAtu = parseFloat(pedido.innerHTML.replace(",", "."));
+      pedidos.forEach((pedido) => {
 
-      Total = Total + precoAtu;
-    })
+        const precoAtu = parseFloat(pedido.innerHTML.replace(",", "."));
 
-    Total = parseFloat(Total.toFixed(2));
+        Total = Total + precoAtu;
+      })
 
-    let totalText = Total.toString();
-    totalText = totalText.replace(".", ",");
+      Total = parseFloat(Total.toFixed(2));
 
-    this.inputToalInHTML("total", totalText);
-    this.inputToalInHTML("valor", totalText);
-    labelCar.setAttribute("data-content", `${pedidos.length}`);
+      let totalText = Total.toString();
+      totalText = totalText.replace(".", ",");
+
+      this.inputToalInHTML("total", totalText);
+      this.inputToalInHTML("valor", totalText);
+      labelCar.setAttribute("data-content", `${pedidos.length}`);
+
+      localStorage.setItem("precoTotal", `R$ ${totalText}`);
+
+      return;
+
+    } catch (err) {
+      console.log("calc preço total", err);
+    }
 
   }
 
   inputToalInHTML(className, text) {
-    const totalElement = document.querySelector(`.${className}`);
-    totalElement.innerHTML = "";
+    try {
+      const totalElement = document.querySelector(`.${className}`);
+      totalElement.innerHTML = "";
 
-    var texto = document.createTextNode(`${text}`);
-    totalElement.appendChild(texto);
+      var texto = document.createTextNode(`${text}`);
+      totalElement.appendChild(texto);
 
-    return;
+      return;
+    } catch (err) {
+      console.log("input text in html", err);
+    }
   }
 
   handleClickEscolher(event) {
-    const { nome } = event.props;
-    const divElement = document.querySelector(`[name="${nome}"]`);
-    divElement.classList.toggle("hidden");
+    try {
+      const { nome } = event.props;
+      const divElement = document.querySelector(`[name="${nome}"]`);
+      divElement.classList.toggle("hidden");
+      return
+    } catch (err) {
+      console.log("Escolher", err)
+    }
   }
 
-  removePedidos(event) {
-    var nPedidos = localStorage.getItem(`pedidosID`);
-    nPedidos = parseInt(nPedidos);
+  removePedidos(id) {
+    try {
 
-    var dadosPedido = localStorage.getItem(`dadosPedido`);
-    dadosPedido = JSON.parse(dadosPedido);
+      var nPedidos = localStorage.getItem(`pedidosID`);
+      nPedidos = parseInt(nPedidos);
 
-    var newDadosPedido = [];
+      var dadosPedido = localStorage.getItem(`dadosPedido`);
+      dadosPedido = JSON.parse(dadosPedido);
 
-    dadosPedido.map((item, index) => {
-      if(index !== parseInt(event.props.id)){
-        newDadosPedido.push(item);
-      }
-    });
+      var newDadosPedido = [];
 
-    localStorage.removeItem(`dadosPedido`);
-    localStorage.setItem(`dadosPedido`, JSON.stringify(newDadosPedido));
+      dadosPedido.map((item, index) => {
+        if (index !== parseInt(id)) {
+          newDadosPedido.push(item);
+        }
+      });
 
-    var node = document.getElementById(`${event.props.id}`);
-
-    if (node.parentNode) {
-      node.parentNode.removeChild(node);
-      this.precoTotal();
-    } else {
-      console.log(node);
-    }
-
-    nPedidos = nPedidos - 1;
-    localStorage.setItem("pedidosID", nPedidos);
-      if(nPedidos === 0 ){
       localStorage.removeItem(`dadosPedido`);
+      localStorage.setItem(`dadosPedido`, JSON.stringify(newDadosPedido));
+
+      var node = document.getElementById(`${id}`);
+      node.removeEventListener('click', () => { this.removePedidos(this) }, false);
+
+      if (node.parentNode) {
+        node.parentNode.removeChild(node);
+        this.precoTotal();
       }
+
+      nPedidos = nPedidos - 1;
+      localStorage.setItem("pedidosID", nPedidos);
+      if (nPedidos === 0) {
+        localStorage.removeItem(`dadosPedido`);
+      }
+      return;
+    } catch (err) {
+      console.log("Remover Pedidos", err);
+    }
   }
 
   render() {

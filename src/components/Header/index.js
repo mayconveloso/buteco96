@@ -5,8 +5,62 @@ const LogoImg = require('./logo.png');
 
 function Layout() {
 
-  function finalizar(){
-    console.log("finalizar")
+  function finalizar() {
+    var dadosPedido = localStorage.getItem(`dadosPedido`);
+    dadosPedido = JSON.parse(dadosPedido);
+
+    var precoTotal = localStorage.getItem(`precoTotal`);
+
+    var newDadosPedido = [];
+
+    dadosPedido.map((item, index) => {
+      if (index === 0) {
+        return;
+      }
+      const { nome, type, preco, preco2 } = JSON.parse(item)
+
+      if (preco) {
+        newDadosPedido.push([type, nome, `R$ ${preco.replace(",", ".")}`]);
+      }
+      if (preco2) {
+        newDadosPedido.push([type, nome, `R$ ${preco2.replace(",", ".")}`]);
+      }
+    });
+
+    var br = "%0A";
+    var espa = "%20"
+    var espaço = "------------------------------";
+    precoTotal = precoTotal.replace(" ", `${espa}`);
+
+    var mensagem = [];
+    mensagem.push("Pedido:")
+    newDadosPedido.forEach((item, index) => {
+      console.log(item);
+      mensagem.push(`nº:${espa}${index + 1}`)
+
+      for (var i = 0; i < 3; i++) {
+        mensagem.push(item[i].replace(" ", `${espa}`));
+      }
+      // mensagem.push(br);
+      mensagem.push(espaço);
+      // mensagem.push(br);
+    })
+
+    mensagem.push(`Total${espa}:${espa}${precoTotal}`)
+
+    var msn = mensagem.toString()
+
+    var busca = ",";
+    // Aqui informamos para alterar todas as ocorrências de "e" 
+    var strbusca = eval('/' + busca + '/g');
+    // substitui todas as ocorrências de "," por "br" 
+    msn = msn.replace(strbusca, `${br}`)
+    console.log(msn);
+
+    window.location.href = `https://api.whatsapp.com/send?l=pt-BR&text=${msn}&phone=11966501337`;
+
+    return;
+
   }
   return (
     <Container>
