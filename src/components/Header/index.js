@@ -57,7 +57,7 @@ function Layout() {
     msn = msn.replace(strbusca, `${br}`)
     console.log(msn);
 
-    window.location.href = `https://api.whatsapp.com/send?l=pt-BR&text=${msn}&phone=11966501337`;
+    window.location.href = `https://api.whatsapp.com/send?l=pt-BR&text=${msn}&phone=5511966501337`;
 
     return;
 
