@@ -72,7 +72,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 45%;
 
     border-radius: 8px;
     background-color: var(--white);

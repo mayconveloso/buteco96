@@ -9,7 +9,8 @@ class Card extends Component {
     this.handleClickEscolher = this.handleClickEscolher.bind(this);
     localStorage.removeItem("precoTotal");
     localStorage.removeItem("dadosPedido");
-    if (localStorage.getItem("pedidosID") === null || localStorage.getItem("pedidosID") === "NaN") { localStorage.setItem("pedidosID", 0) };
+    localStorage.setItem("pedidosID", 0);
+    // if (localStorage.getItem("pedidosID") === null || localStorage.getItem("pedidosID") === "NaN") { localStorage.setItem("pedidosID", 0) };
   }
 
   handleClick = (event) => {
