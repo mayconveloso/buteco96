@@ -66,13 +66,19 @@ export const Container = styled.div`
 
   span{
     padding: 10px;
+    font-size: 1.9rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
   img{
     width: 125px;
     height: 30px;
   }
   div.flex {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -81,11 +87,14 @@ export const Container = styled.div`
 
   div.div-1 {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     max-height: 100px;
+    width: 80%;
   }
 
   @media( max-width: 824px){
+
     div.menu {
       display:block;
       cursor: pointer;
@@ -122,11 +131,16 @@ export const Logo = styled.div`
 export const Menu = styled.div`
   margin-left: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100px;
-  
+  width: 100%;
 
+  nav{
+    width: 100%;
+    height: 100%;
+  }
+  
   ul {
     display: flex;
     list-style: none;
@@ -143,7 +157,6 @@ export const Menu = styled.div`
 
     font-size: 1.6rem;
     font-weight: bold;
-    text-transform: uppercase;
 
     transition: all 0.4s;
 
@@ -152,10 +165,13 @@ export const Menu = styled.div`
     }
   }
 
+  @media( max-width: 1129px){
+    width: 100%;
+  }
+
   @media( max-width: 824px){
 
     nav {
-      background-color: var(--cor5);
       width: 50%;
       height: 100%;
       left: -50%;
@@ -174,6 +190,7 @@ export const Menu = styled.div`
       height: 100vh;
 
       background-color: var(--cor5);
+      opacity: 0.98;
 
       display: flex;
       flex-direction: column;
@@ -188,13 +205,12 @@ export const Menu = styled.div`
       align-items: flex-start;
       height: 100%;
 
-      padding: 20px 10px;
+      padding: 20px;
 
       box-shadow: 0 2px 5px -4px var(--cor1);
 
       font-size: 2rem;
       font-weight: bold;
-      text-transform: uppercase;
 
       transition: all 0.4s;
 
@@ -214,13 +230,14 @@ export const Car = styled.div`
 
   font-size: 1.6rem;
   font-weight: bold;
-  text-transform: uppercase;
 
   div.itens{
     flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-right: 10px;
   }
 
   input[type="checkbox"]{
@@ -232,7 +249,6 @@ export const Car = styled.div`
   }
 
   nav {
-    background-color: var(--cor5);
     width: 50%;
     height: 100%;
     left: 100%;
@@ -245,7 +261,9 @@ export const Car = styled.div`
     position: absolute;
     top:-3px;
     padding-top: 10px;
-    padding: 0 5px;
+    padding: 20px 5px 0;
+
+    opacity: 0.98;
 
     overflow-y: scroll;
 
@@ -272,22 +290,25 @@ export const Car = styled.div`
   ul > li.preco-finalizar {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
-    margin-top: 10px;
+    margin-top: 30px;
 
     height: 30px;
 
-    @media(max-width: 448px){
-      flex-direction: column;
+    
+  }
 
-      > span {
-        padding: 5px;
-      }
+  li.li-itens{
+    padding: 0 5px;
 
-      > button {
-        width: 100%;
+    > label {
+      font-size: 2.4rem;
+      font-weight: bold;
+      padding-bottom: 10px;
+      &:last-child{
+        padding: none;
       }
     }
   }
@@ -296,7 +317,8 @@ export const Car = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 100%;
+    width: 50%;
 
     border-radius: 8px;
     background-color: var(--white);
@@ -306,9 +328,8 @@ export const Car = styled.div`
     box-shadow: 0 0 5px 0 var(--cor1);
     color: var(--cor1);
 
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: bold;
-    text-transform: uppercase;
 
     transition: all 0.4s;
 
@@ -357,30 +378,30 @@ export const Car = styled.div`
     transition: 3s;
 
     &:after{
-    width: 15px;
-    height: 15px;
+      width: 15px;
+      height: 15px;
 
-    font-size: 0.9rem;
+      font-size: 0.9rem;
 
-    background-color: red;
-    color: var(--white);
-    border-radius: 8px;
+      background-color: red;
+      color: var(--white);
+      border-radius: 8px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    content: attr(data-content);
+      content: attr(data-content);
 
-    position: absolute;
+      position: absolute;
 
-    top: -3px;
-    right: -3px;
+      top: -3px;
+      right: -3px;
 
-    z-index: 4;
+      z-index: 4;
 
-    transition: 3s;
-  }
+      transition: 3s;
+    }
 
   }
 
@@ -388,7 +409,7 @@ export const Car = styled.div`
     display: flex;
     justify-content: space-between;
 
-    margin: 2px 2px 8px;
+    margin: 2px 2px 10px;
     padding: 8px 6px;
     position: relative;
 
@@ -400,13 +421,15 @@ export const Car = styled.div`
 
     .texto {
       flex-shrink: 1;
+      width: 60%;
+      padding-right: 8px;
 
       > h1{
-        font-size: 1.2rem;
+        font-size: 1.9rem;
       }
       > h3{
-        font-size: 1rem;
-        font-weight: 300;
+        font-size: 1.5rem;
+        font-weight: 400;
         text-transform: lowercase;
       }
 
@@ -437,7 +460,7 @@ export const Car = styled.div`
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      width: 50%;
+      width: 40%;
 
       font-size: 1rem;
 
@@ -448,19 +471,144 @@ export const Car = styled.div`
     }
   }
 
-
-  @media( max-width: 1129px){
-      label >  span.car{
-        display: none;
-      }
-    }
     
   @media( max-width: 1032px){
     div.itens{
       display: none;
     }
   }
+
+  @media( max-width: 600px){
+    li.li-itens > label {
+      font-size: 2rem;
+    }
+
+    div.texto {
+      > h1 {
+        font-size: 1.8rem;
+      }
+
+      > h3 {
+        font-size: 1.3rem;
+      }
+    }
+
+    span.RS{
+      font-size: 1.6rem;
+    }
+
+  }
   
+  @media(max-width: 554px){
+
+    ul > li.preco-finalizar {
+      flex-direction: column;
+      align-items: flex-start;
+
+      > span {
+
+        padding: 5px;
+        font-size: 1.5rem;
+
+        > span.total{
+          font-size: 1.5rem;
+        }
+      }
+
+      > button {
+        width: 100%;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  @media( max-width: 534px){
+    li.li-itens > label {
+      font-size: 1.5rem!important;
+    }
+
+    div.texto {
+      > h1 {
+        font-size: 1.3rem!important;
+      }
+
+      > h3 {
+        font-size: 1rem!important;
+      }
+    }
+
+    span.RS{
+      font-size: 1.3rem!important;
+    }
+
+  }
+
+  @media( max-width: 448px){
+    .texto::after{
+      font-size: 0.8rem!important;
+      width: 12px!important;
+      height: 12px!important;
+
+      border-radius: 2px!important;
+
+      top: 4px!important;
+    }
+  }
+
+  @media( max-width: 420px){
+    li.li-itens > label {
+      font-size: 1.2rem!important;
+    }
+
+    div.texto {
+      > h1 {
+        font-size: 1rem!important;
+      }
+
+      > h3 {
+        font-size: 0.8rem!important;
+      }
+    }
+
+    span.RS{
+      font-size: 1rem!important;
+    }
+
+    > span {
+    font-size: 1.2rem;
+
+    > span.total{
+      font-size: 1.2rem;
+    }
+    }
+
+    > button {
+    font-size: 1.2rem;
+}
+  }
+
+
+  @media( max-width: 340px){
+    li.li-itens > label {
+      font-size: 1.1rem!important;
+    }
+
+    div.texto {
+      > h1 {
+        font-size: 0.9rem!important;
+      }
+
+      > h3 {
+        font-size: 0.7rem!important;
+      }
+    }
+
+    span.RS{
+      font-size: 0.9rem!important;
+    }
+
+  }
+    
 `;
 
 export const CartIcon = styled(Cart)`

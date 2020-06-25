@@ -3,7 +3,7 @@ import { Container, Endereco, Contato, RedesSocias, FaceIcon, InstaIcon, WhatsIc
 
 function Footer() {
   return (
-    <Container>
+    <Container id="footer">
       <div className="flex">
         <Endereco>
             <span> <strong>Endereço:</strong> Rua dos Crisâmetros </span>

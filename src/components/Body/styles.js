@@ -5,6 +5,23 @@ export const Container = styled.div`
   width: 100%;
 
   color: var(--white);
+
+  > div.Title{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: var(--cor6);
+
+    > h1{
+      color: var(--white);
+      text-shadow: 2px 2px var(--cor3);
+
+      font-size: 5.3rem;
+    }
+  }
 `;
 
 export const Cardapio = styled.div`
@@ -12,6 +29,7 @@ export const Cardapio = styled.div`
   width: 100%;
   height: auto;
   padding: 30px 0;
+  margin: 0 auto ;
 
   background-color: var(--cor2);
 
@@ -50,6 +68,12 @@ export const Cardapio = styled.div`
       align-items: center!important;
     }
   }
+
+  @media( max-width: 534px){
+    label{
+      font-size: 2.2rem;
+    }
+  }
 `;
 
 export const Batatas = styled.section`
@@ -73,8 +97,8 @@ export const Batatas = styled.section`
 `;
 
 export const Porcoes = styled.section`
-  width: 80%;
   height: 34%;
+  width: 80%;
 
   margin: 0 auto;
   padding: 10px;
@@ -92,8 +116,8 @@ export const Porcoes = styled.section`
 `;
 
 export const Bebidas = styled.section`
-  width: 80%;
   height: 34%;
+  width: 80%;
 
   margin: 0 auto;
   padding: 10px;

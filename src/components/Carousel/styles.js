@@ -4,8 +4,8 @@ import { KeyboardArrowRight } from 'styled-icons/material-rounded';
 
 export const Slider = styled.div`
   width: 80%;
-  margin: 20px auto 30px;
-  height: 600px;
+  margin: 50px auto ;
+  height: 500px;
 
   border-radius: 10px;
 
@@ -29,7 +29,6 @@ export const Slider = styled.div`
     border-radius: 10px;
 
     font-size: 2rem;
-    text-transform: uppercase;
   }
 
   #goLeft{

@@ -27,15 +27,15 @@ export const Container = styled.div`
   }
 
   div.modal {
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
 
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 0;
+    left: 0;
 
     background-color: var(--cor5);
-    opacity: 1;
+
     overflow: hidden;
 
     border-radius: 8px;
@@ -43,18 +43,23 @@ export const Container = styled.div`
     color: var(--cor1);
 
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-  }
-
-  div.modal > div {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    width: 100%;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    > h1{
+      font-size: 2.3rem;
+    }
   }
+
 
   div.group{
     padding: 20px 2px;
@@ -65,6 +70,16 @@ export const Container = styled.div`
 
     &:first-child{
       box-shadow: 0 7px 3px -7px var(--cor1);
+    }
+
+    > span {
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      &:before{
+        content: "R$ ";
+
+      }
     }
   }
 
@@ -82,7 +97,7 @@ export const Container = styled.div`
     box-shadow: 0 0 5px 0 var(--cor1);
     color: var(--cor1);
 
-    font-size: 1rem;
+    font-size: 1.9rem;
     font-weight: bold;
     text-transform: uppercase;
 
@@ -107,12 +122,35 @@ export const Container = styled.div`
       height: 90%;
     }
   }
+
+  @media( max-width: 351px){
+
+    div.modal {
+      > h1 {
+        font-size: 2rem;
+      }
+    }
+
+    div.group {
+      > span {
+        font-size: 1.4rem;
+      }
+
+      > button{
+        font-size: 1.6rem;
+      }
+    }
+
+  }
+  
 `;
 
 export const Text = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    padding: 5px;
 `;
 
 export const Titles = styled.div`
@@ -145,6 +183,15 @@ export const Titles = styled.div`
       }
     }
 
+    @media( max-width: 351px){
+      h1 {
+        font-size: 1.6rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+
 `;
 
 export const Extras = styled.div`
@@ -164,13 +211,13 @@ export const Extras = styled.div`
     }
 
     > button {
-      width: 100%;
+      width: 110%;
 
       padding: 5px;
       margin-bottom: 5px;
 
       font-size: 1.9rem;
-      font-weight: 500;
+      font-weight: bold;
       text-transform: uppercase;
 
       background-color: var(--cor5);

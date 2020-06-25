@@ -242,12 +242,13 @@ class Card extends Component {
         </Text>
         {type === "Porções" ?
           <div className="modal hidden" name={nome}>
+            <h1>{nome}</h1>
             <div>
               <div className="group">
-                <span className="preco"> {preco} </span> <button onClick={() => { const { preco2, ...props } = this.props; const objeto = { props }; this.handleClick(objeto) }} >Pedir</button>
+                <span className="preco"> {preco} </span> <button onClick={() => { const { preco2, ...props } = this.props; const objeto = { props }; this.handleClick(objeto); document.querySelectorAll(".modal").forEach( (item) => { item.classList.add("hidden")}) }} >Pedir</button>
               </div>
               <div className="group">
-                <span className="preco2"> {preco2} </span> <button onClick={() => { const { preco, ...props } = this.props; const objeto = { props }; this.handleClick(objeto) }}>Pedir</button>
+                <span className="preco2"> {preco2} </span> <button onClick={() => { const { preco, ...props } = this.props; const objeto = { props }; this.handleClick(objeto); document.querySelectorAll(".modal").forEach( (item) => { item.classList.add("hidden")}) }}>Pedir</button>
               </div>
             </div>
           </div>

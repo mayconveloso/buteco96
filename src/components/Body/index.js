@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Cardapio, Batatas, Porcoes, Bebidas } from './styles';
-import { Link } from 'react-router-dom';
 import Carousel from '../Carousel';
 import Card from '../Card';
 
@@ -12,8 +11,10 @@ function Footer() {
       backgroundRepeat: 'repeat',
       backgroundColor: 'white',
       }} >
+      <div className="Title"><h1>Buteco 96</h1></div>
+      <div id="destaques"></div>
       <Carousel />
-      <Cardapio>
+      <Cardapio id="cardapio">
         <Batatas>
           <label>Batata Recheada</label>
           <div className="card-contet">

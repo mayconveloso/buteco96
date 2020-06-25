@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Logo, Menu, Car, CartIcon } from './styles';
+import $ from "jquery";
 const LogoImg = require('./logo.png');
 
 function Layout() {
+
+  useEffect(() => {
+    $('#navMenu a').click(function(e){
+      e.preventDefault();
+      var id = $(this).attr('href'),
+          menuHeight = $('#nav').innerHeight(),
+          targetOffset = $(id).offset().top;
+      $('html, body').animate({
+        scrollTop: targetOffset - menuHeight
+      }, 500);
+    });
+  }, )
 
   function finalizar() {
     var dadosPedido = localStorage.getItem(`dadosPedido`);
@@ -35,7 +48,6 @@ function Layout() {
     var mensagem = [];
     mensagem.push("Pedido:")
     newDadosPedido.forEach((item, index) => {
-      console.log(item);
       mensagem.push(`nº:${espa}${index + 1}`)
 
       for (var i = 0; i < 3; i++) {
@@ -46,24 +58,25 @@ function Layout() {
       // mensagem.push(br);
     })
 
-    mensagem.push(`Total${espa}:${espa}${precoTotal}`)
+    precoTotal = precoTotal.replace(",",".")
 
-    var msn = mensagem.toString()
+    mensagem.push(`Total${espa}:${espa}${precoTotal}`);
+
+    var msn = mensagem.toString();
 
     var busca = ",";
     // Aqui informamos para alterar todas as ocorrências de "e" 
     var strbusca = eval('/' + busca + '/g');
     // substitui todas as ocorrências de "," por "br" 
-    msn = msn.replace(strbusca, `${br}`)
-    console.log(msn);
+    msn = msn.replace(strbusca, `${br}`);
 
-    window.location.href = `https://api.whatsapp.com/send?l=pt-BR&text=${msn}&phone=5511966501337`;
+    // window.location.href = `https://api.whatsapp.com/send?l=pt-BR&text=${msn}&phone=551123910315`;
 
     return;
 
   }
   return (
-    <Container>
+    <Container id="nav">
       <div className="flex">
         <input id="menu-toggle" type="checkbox" />
         <label htmlFor="menu-toggle">
@@ -81,19 +94,19 @@ function Layout() {
             </Link>
           </Logo>
           <Menu>
-            <nav>
+            <nav id="navMenu">
               <ul>
                 <li>
-                  <Link to="">Contato</Link>
+                  <a href="#destaques">Destaques</a>
                 </li>
                 <li>
-                  <Link to="">Cardápio</Link>
+                  <a href="#cardapio">Cardápio</a>
                 </li>
                 <li>
-                  <Link to="">Promoções</Link>
+                  <a href="#footer">Endereço</a>
                 </li>
                 <li>
-                  <Link to="">Local de Entrega</Link>
+                  <a href="#footer">Contato</a>
                 </li>
               </ul>
             </nav>
@@ -105,7 +118,7 @@ function Layout() {
           </div>
           <input id="car-toggle" type="checkbox" />
           <label className="label-car" data-content="0" htmlFor="car-toggle">
-            <span className="car">Carrinho</span> <CartIcon />
+            <CartIcon />
           </label>
           <div className="nav">
             <nav>
