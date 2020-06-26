@@ -70,7 +70,7 @@ function Layout() {
     // substitui todas as ocorrências de "," por "br" 
     msn = msn.replace(strbusca, `${br}`);
 
-    // window.location.href = `https://api.whatsapp.com/send?l=pt-BR&text=${msn}&phone=551123910315`;
+    window.location.href = `https://api.whatsapp.com/send?l=pt-BR&text=${msn}&phone=551123910315`;
 
     return;
 
