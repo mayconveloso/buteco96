@@ -172,6 +172,8 @@ export const Titles = styled.div`
       font-size: 1.5rem;
       font-weight: 400;
       margin-bottom: 5px;
+
+      width: 200px;
     }
 
     @media( max-width: 566px){

@@ -238,6 +238,7 @@ export const Car = styled.div`
     align-items: center;
 
     margin-right: 10px;
+
   }
 
   input[type="checkbox"]{
@@ -344,8 +345,10 @@ export const Car = styled.div`
 
   span.valor{
     padding: 2px;
-    background-color: red;
+    font-size: 1.6rem;
+
     border-radius: 4px;
+    background-color: red;
     color: var(--white);
   }
 
